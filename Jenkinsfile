@@ -10,7 +10,7 @@ pipeline{
         stage('Git Clone'){
             
             steps{
-               git branch: 'main', url: 'https://github.com/knbtechnosys/JAVA_Project_6pm.git'
+               git branch: 'main', url: 'https://github.com/snehalatabarenkal/JAVA_Project_6pm'
             }
         }
         
@@ -33,7 +33,7 @@ pipeline{
         
         stage('Docker Build'){
             steps{
-                sh 'docker build -t nbktechnosys/myjavaproject6un .'
+                sh 'docker build -t snehalatabarenkal/JAVA_Project_6pm .'
             }
         }
         
@@ -42,7 +42,7 @@ pipeline{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerpush')]) {
                 sh 'docker login -u nbktechnosys -p ${dockerpush}'
                 }
-                 sh 'docker push nbktechnosys/myjavaproject6jun'
+                 sh 'docker push snehalatabarenkal/JAVA_Project_6pm/myjavaproject6jun'
             }
            
         }
