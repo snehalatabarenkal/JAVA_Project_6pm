@@ -1,20 +1,22 @@
 pipeline {
-   agent any
-   tools {
-        maven 'maven' 
+    agent any
+    
+    tools {
+        maven 'Maven' 
     }
     
     stages {
-        stage('clone') {
+        stage('Clone Repository') {
             steps {
-               git branch: 'main', url: 'https://github.com/snehalatabarenkal/JAVA_Project_6pm'
+                git branch: 'main', url: 'https://github.com/snehalatabarenkal/JAVA_Project_6pm'
             }
         }
         
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'mvn install'
+                sh 'mvn clean install'
             }
         }
     }
 }
+
